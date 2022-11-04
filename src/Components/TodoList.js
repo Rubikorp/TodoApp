@@ -24,6 +24,7 @@ export default function TodoList(props) {
                                 <button
                                     className="button is-dunger"
                                     title="Удалить"
+                                    onClick={(e) => props.delete(item.key)}
                                 >
                                     &#9746;
                                 </button>

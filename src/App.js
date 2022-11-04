@@ -28,11 +28,27 @@ export default class App extends Component {
     super(props);
     this.state = {data: initialDate};
     this.setDone = this.setDone.bind(this);
+    this.delete = this.delete.bind(this);
+    this.add = this.add.bind(this);
   }
 
+  // Метод пометки дела как выполненное
   setDone(key) {
     const deed = this.state.data.find((current) => current.key === key);
     if(deed) deed.done = true;
+    this.setState((state) => ({}));
+  }
+
+  // Удалить дело
+  delete(key) {
+    const newData = this.state.data.filter((current) => current.key !== key);
+    this.setState((state) => ({data: newData}));
+    debugger;
+  }
+
+  // Добавить дело
+  add(deed) {
+    this.state.data.push(deed);
     this.setState((state) => ({}));
   }
   
@@ -46,7 +62,11 @@ export default class App extends Component {
             </span>
           </div>
           <main className='content px-6 mt-6'>
-            <TodoList list={this.state.data} setDone={this.setDone}></TodoList>
+            <TodoList 
+              list={this.state.data} 
+              setDone={this.setDone}
+              delete={this.delete}
+            ></TodoList>
           </main>
         </nav>
       </div>
