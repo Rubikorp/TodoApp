@@ -1,5 +1,6 @@
 import { Component } from 'react';
 import TodoList from './Components/TodoList';
+import TodoAdd from './Components/TodoAdd';
 
 const date1 = new Date(2022, 7, 19, 14, 5);
 const date2 = new Date(2022, 7, 19, 15, 23);
@@ -67,6 +68,9 @@ export default class App extends Component {
               setDone={this.setDone}
               delete={this.delete}
             ></TodoList>
+            <TodoAdd
+              add={this.add}
+            ></TodoAdd>
           </main>
         </nav>
       </div>
